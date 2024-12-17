@@ -27,10 +27,10 @@ public class PedidoEntity implements Serializable {
     @Column(name = "id_cliente")
     private ClienteEntity cliente;
     @ManyToOne
-    @JoinColumn(name = "direccion_id")
+    @JoinColumn(name = "direccion")
     private DireccionEntity direccion;
     @ManyToOne
-    @JoinColumn(name = "estado_id")
+    @JoinColumn(name = "estado")
     private EstadoPedidoEntity estadoPedido;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
