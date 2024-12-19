@@ -25,16 +25,16 @@ public class PedidoEntity implements Serializable {
     private Integer id;
     @Column(name = "fecha")
     private Timestamp fecha;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_cliente")
     private ClienteEntity cliente;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "direccion")
     private DireccionEntity direccion;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "estado")
     private EstadoPedidoEntity estadoPedido;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name = "pedido_producto",
             joinColumns = @JoinColumn(name = "id_pedido"),

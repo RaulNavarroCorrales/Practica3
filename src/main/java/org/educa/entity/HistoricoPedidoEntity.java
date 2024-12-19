@@ -25,7 +25,7 @@ public class HistoricoPedidoEntity implements Serializable {
     @Column(name = "fec_mod")
     private Timestamp fecMod;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_pedido", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_pedido")
     private PedidoEntity pedido;
 }

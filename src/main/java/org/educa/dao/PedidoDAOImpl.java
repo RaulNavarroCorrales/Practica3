@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public class PedidoDAOImpl implements PedidoDAO {
     @Override
     public void insertarPedido(PedidoEntity pedido) {
-        try (Session session = DAOSession.getSession()){
+        try (Session session = DAOSession.getSession()) {
             EstadoPedidoEntity estadoPedido = new EstadoPedidoEntity();
             estadoPedido.setId(1);
             pedido.setEstadoPedido(estadoPedido);
@@ -29,6 +29,8 @@ public class PedidoDAOImpl implements PedidoDAO {
         historicoPedido.setCambios("Pedido creado");
         historicoPedido.setUsuMod("postgres");
         historicoPedido.setFecMod(new Timestamp(System.currentTimeMillis()));
+
         session.persist(historicoPedido);
     }
+
 }
