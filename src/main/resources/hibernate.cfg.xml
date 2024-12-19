@@ -4,10 +4,10 @@
 
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:15432/postgres</property> <!-- BD Mane -->
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property> <!-- BD Mane -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
         <property name="hibernate.connection.username">postgres</property> <!-- DB User -->
-        <property name="hibernate.connection.password">2DAMAD</property> <!-- DB Password -->
+        <property name="hibernate.connection.password">Otorrino27</property> <!-- DB Password -->
         <property name="hibernate.default_schema">public</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
         <property name="hibernate.c3p0.min_size">5</property>
@@ -26,5 +26,6 @@
         <mapping class="org.educa.entity.DireccionEntity"/>
         <mapping class="org.educa.entity.PedidoEntity"/>
         <mapping class="org.educa.entity.EstadoPedidoEntity"/>
+        <mapping class="org.educa.entity.HistoricoPedidoEntity"/>
     </session-factory>
 </hibernate-configuration>

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,18 +25,22 @@ public class PedidoEntity implements Serializable {
     private Integer id;
     @Column(name = "fecha")
     private Timestamp fecha;
-    @Column(name = "id_cliente")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cliente")
     private ClienteEntity cliente;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "direccion")
     private DireccionEntity direccion;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estado")
     private EstadoPedidoEntity estadoPedido;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "pedido_producto",
-            joinColumns = @JoinColumn(name = "id_producto"),
-            inverseJoinColumns = @JoinColumn(name = "id_pedido"))
-    private List<ProductoEntity> productos;
+            joinColumns = @JoinColumn(name = "id_pedido"),
+            inverseJoinColumns = @JoinColumn(name = "id_producto"))
+    private List<ProductoEntity> productos = new ArrayList<>();
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private HistoricoPedidoEntity historicoPedido;
+
 }

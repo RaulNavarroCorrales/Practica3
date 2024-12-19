@@ -25,20 +25,24 @@ public class ProductoService {
     }
 
     public ProductoEntity getFirstProductoByNameTallaAndColor(String nombre, String talla, String color) throws SQLException {
-        try (Session session = DAOSession.getSession()){
+        try (Session session = DAOSession.getSession()) {
             return productoDAO.getFirstProductoByNameTallaAndColor(nombre, talla, color, session);
         }
     }
 
     public List<ProductoEntity> findByName(ProductoEntity producto) throws SQLException {
-        try(Session session = DAOSession.getSession()) {
+        try (Session session = DAOSession.getSession()) {
             return productoDAO.findByName(producto, session);
         }
     }
 
     private void calcularPrecioFinal(ProductoEntity producto) {
         if (producto.getDescuento() != null) {
-            producto.setPrecioFinal(producto.getPrecio().subtract(producto.getPrecio().multiply(producto.getDescuento().divide(new BigDecimal(100),2, RoundingMode.HALF_UP))).setScale(2, RoundingMode.HALF_UP));
+            producto.setPrecioFinal(producto.getPrecio().subtract(producto.getPrecio().multiply(producto.getDescuento().divide(new BigDecimal(100), 2, RoundingMode.HALF_UP))).setScale(2, RoundingMode.HALF_UP));
         } else producto.setPrecioFinal(producto.getPrecio().setScale(2, RoundingMode.HALF_UP));
+    }
+
+    public void marcarProductoVendido(ProductoEntity producto) {
+        productoDAO.marcarProductoVendido(producto);
     }
 }

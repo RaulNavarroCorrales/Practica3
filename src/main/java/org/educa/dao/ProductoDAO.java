@@ -11,4 +11,6 @@ public interface ProductoDAO {
     ProductoEntity getFirstProductoByNameTallaAndColor(String nombre, String talla, String color, Session session);
 
     List<ProductoEntity> findByName(ProductoEntity producto, Session session);
+
+    void marcarProductoVendido(ProductoEntity producto);
 }
